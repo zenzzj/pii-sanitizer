@@ -1,5 +1,5 @@
 {
-  "name": "pii-sanitizer", 
+  "name": "pii-sanitizer-js", 
   "version": "1.0",
   "description": "A lightweight utility to sanitize PII from strings and prompts.",
   "main": "src/index.js",
