@@ -1,52 +1,67 @@
-# PII Sanitizer JS
+# 🛡️ PII Sanitizer JS
 
 ![Bun](https://img.shields.io/badge/Bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white)
 [![npm version](https://img.shields.io/npm/v/pii-sanitizer-js.svg?style=flat-square)](https://www.npmjs.com/package/pii-sanitizer-js)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![NPM Downloads](https://img.shields.io/npm/dm/pii-sanitizer-js.svg?style=flat-square)](https://www.npmjs.com/package/pii-sanitizer-js)
 
-A lightweight, high-performance utility for **detecting and anonymizing Personally Identifiable Information (PII)** in text.
+A lightweight, **zero-dependency**, high-performance utility for detecting and anonymizing Personally Identifiable Information (PII) in text.
 
-Originally designed to sanitize prompts before they are sent to AI models (LLMs) or to clean log files before they are shared.
+> **Ideal for:** Sanitizing prompts before sending them to LLMs (OpenAI, Claude), cleaning log files, and ensuring GDPR/data privacy compliance in backend services.
 
-## Features
+## 🚀 Key Features
 
-* **Smart Detection**: Identifies emails, credit cards, IPv4 addresses, and phone numbers.
-* **Developed with Bun**: Take advantage of the speed of the most modern runtime.
-* **Dual Interface**: Use it as a library in your code or as a CLI tool in your terminal.
-* **No Dependencies**: Native, lightweight, and secure code.
+* **Zero Dependencies**: No bloated node_modules. Native, fast, and secure.
+* **High Performance**: Optimized regex patterns for real-time sanitization.
+* **Bun-First**: Built with Bun for maximum speed, fully compatible with Node.js.
+* **AI-Ready**: Designed to prevent data leakage in AI-integrated applications.
 
-## Installation
+## 📊 Supported Data Types
 
-You can install it using NPM or Bun:
+| Type | Tag Replacement | Example Detection |
+| :--- | :--- | :--- |
+| **Email** | `[HIDDEN_EMAIL]` | `user@example.com` |
+| **Phone** | `[HIDDEN_PHONE]` | `+1 555-0199`, `(123) 456-7890` |
+| **Credit Card** | `[HIDDEN_CARD]` | `4532 XXXX XXXX XXXX` |
+| **IPv4 Address** | `[HIDDEN_IP]` | `192.168.1.1` |
+
+## 📦 Installation
 
 ```bash
-# Using NPM
+# Using npm
 npm install pii-sanitizer-js
 
-# Using Bun
+# Using bun
 bun add pii-sanitizer-js
 ```
 
-## Usage
-As a Library (API)
-Ideal for integrating into your Node.js applications or backend processes.
+## 🛠️ Usage
+
+As a Library
+Integrate it easily into your middleware or data processing pipeline.
 
 ```javascript
-import { sanitize } from ‘pii-sanitizer-js’;
+import { sanitize } from 'pii-sanitizer-js';
 
-const text = “Contact admin@mail.com or call +1 555-0199.”;
-const sanitized = sanitize(text);
+const input = "Send the invoice to john.doe@provider.com or call 555-012-345. My IP is 10.0.0.5";
+const cleanText = sanitize(input);
 
-console.log(sanitized); 
-// Output: “Contact [HIDDEN_EMAIL] or call [HIDDEN_PHONE].”
+console.log(cleanText);
+// Output: "Send the invoice to [HIDDEN_EMAIL] or call [HIDDEN_PHONE]. My IP is [HIDDEN_IP]"
 ```
 
-## Why this project
+## 🔒 Privacy First
+All sanitization is performed **locally**. No data is ever sent to external servers. This is a pure string-manipulation utility designed to be safe for production environments.
 
-This project arose from the need to protect data privacy when interacting with third-party services and Artificial Intelligence APIs. It demonstrates the implementation of advanced regular expressions and data flow management in Node.js/Bun environments.
+## 🛠️ Motivation
+When working with LLMs (like OpenAI or Claude), it's easy to accidentally leak sensitive data in prompts. I built this to have a lightweight, zero-dependency way to scrub text before it leaves my infrastructure.
 
-## Author
+## 🤝 Contributing
+Contributions are welcome! If you find a bug or want to support a new PII type (like IPv6 or specific ID formats), feel free to:
 
-* **Zenzzj**:
-  * Github: [@Zenzzj](https://github.com/zenzzj)
-  * Discord: zen_xp
+1. **Fork** the project.
+2. **Create** your feature branch.
+3. **Open** a Pull Request.
+
+---
+Developed with ❤️ by **David (Zenzzj)** [GitHub](https://github.com/zenzzj) • [Discord](https://discord.com/users/925137666331246653)
