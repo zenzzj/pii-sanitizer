@@ -1,0 +1,16 @@
+{
+  "name": "pii-sanitizer", 
+  "version": "1.0",
+  "description": "A lightweight utility to sanitize PII from strings and prompts.",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "pii-sanitize": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["privacy", "pii", "sanitizer", "security", "nlp"],
+  "author": "Zen_xP",
+  "license": "MIT"
+}
